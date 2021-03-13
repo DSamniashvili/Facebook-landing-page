@@ -2,28 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60313f62-2ef5-4ed4-8884-60b92326c070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/UsersList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/generic-components/UserCard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/user-model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/generic-components/ModalComponent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ModalContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ModalContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/generic-components/Input.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/generic-components/Input.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UsersList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UsersList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/generic-components/UserCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/generic-components/UserCard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/COLORS.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/COLORS.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/ContentContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ContentContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/ListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ListContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/LoginRegisterContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/LoginRegisterContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/action-constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/action-constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/login-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/login-actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/user-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/user-reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/users-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/users-reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/ContentContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/ContentContainer.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/ListContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/ListContainer.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/LoginRegisterContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/LoginRegisterContainer.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/RegistrationContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/RegistrationContainer.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +58,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1615630684861</updated>
-      <workItem from="1615630686337" duration="28084000" />
+      <workItem from="1615630686337" duration="36133000" />
     </task>
     <servers />
   </component>

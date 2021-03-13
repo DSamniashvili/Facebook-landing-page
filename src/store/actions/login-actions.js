@@ -1,17 +1,25 @@
-import {REGISTER_USER_FAIL, REGISTER_USER_SUCCESS, SEND_REGISTER_USER} from "./action-constants";
+import {
+    REGISTER_USER_FAIL,
+    REGISTER_USER_SUCCESS,
+    SEND_REGISTER_USER,
+    UPDATE_USER,
+    SET_CURRENT_USER,
+    CLEAR_CURRENT_USER,
+    SEND_UPDATE_USER,
+    UPDATE_USER_FAIL,
+} from "./action-constants";
 
-function timeout(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+// function timeout(ms) {
+//     return new Promise(resolve => setTimeout(resolve, ms));
+// }
 
 export const callToRegisterUserAction = (id, name, surname, email, password) => {
-    return async dispatch => {
+    return dispatch => {
 
         let userRegisterPromise = new Promise((resolve, reject) => {
             dispatch({
                 type: SEND_REGISTER_USER
             });
-
 
             setTimeout(() => {
                 resolve('User authenticated successfully');
@@ -43,6 +51,57 @@ export const callToRegisterUserAction = (id, name, surname, email, password) => 
                     }
                 });
             })
+    }
+}
+
+export const callToUpdateUserAction = (id, name, surname, email, password) => {
+    return dispatch => {
+
+        let userUpdatePromise = new Promise((resolve, reject) => {
+            dispatch({
+                type: SEND_UPDATE_USER,
+            });
+
+            setTimeout(() => {
+                resolve('User updated successfully');
+            }, 3000);
+        });
+
+        userUpdatePromise.then((response) => {
+            dispatch({
+                type: UPDATE_USER,
+                payload: {
+                    updated: true,
+                    id,
+                    name,
+                    surname,
+                    email,
+                    password
+                }
+            });
+        })
+            .catch(err => {
+                dispatch({
+                    type: UPDATE_USER_FAIL,
+                    payload: {
+                        updated: false,
+                    }
+                });
+            })
+    }
+}
+
+
+export const setCurrentUserAction = userId => {
+    return {
+        type: SET_CURRENT_USER,
+        userId,
+    }
+}
+
+export const clearCurrentUserAction = () => {
+    return {
+        type: CLEAR_CURRENT_USER,
     }
 }
 

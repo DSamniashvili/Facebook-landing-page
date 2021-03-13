@@ -3,9 +3,15 @@ import {ReactComponent as CloseIconSvg} from '../../assets/images/closeIcon.svg'
 import userImage from '../../assets/images/userIcon.png'
 import girl from '../../assets/images/girl.jpg'
 
-const UserCard = ({user}) => {
+const UserCard = ({user, onClick}) => {
+    const onClickBound = () => {
+        if (onClick) {
+            onClick(user.id);
+        }
+    }
     return (
-        <div className={'user-card-container'}>
+        <div className={'user-card-container'}
+             onClick={onClickBound}>
             <div className={'close-icon-container'}>
                 <CloseIconSvg className={'close-icon'}/>
             </div>

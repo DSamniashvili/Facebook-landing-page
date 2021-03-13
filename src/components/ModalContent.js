@@ -8,7 +8,7 @@ import {DotLoader} from "react-spinners";
 
 import '../styles/LoginRegisterContainer.scss';
 import '../styles/RegistrationContainer.scss';
-import {callToRegisterUserAction} from "../store/actions/login-actions";
+import {callToRegisterUserAction, callToUpdateUserAction} from "../store/actions/login-actions";
 
 const initialState = {
     name: "",
@@ -24,20 +24,38 @@ const initialErrorState = {
     passwordError: 'Invalid password',
 }
 
-const ModalContent = ({closeModal}) => {
+const ModalContent = ({closeModal, currentUserId}) => {
     const dispatch = useDispatch();
     const isLoading = useSelector(state => state.users.isLoading);
-    const activeUser = useSelector(state => state.users.activeUser);
+
 
     const [state, setState] = useState(initialState);
     const [error, setError] = useState(initialErrorState);
     const [showErrors, setShowErrors] = useState(false);
 
-    useEffect(() => {
-        if(activeUser){
-            alert('You Registered and logged in in successfully');
+    const activeUser = useSelector(state => state.users.activeUser);
+
+    const fillState = () => {
+        if(activeUser && Object.keys(activeUser).length > 0){
+            setState({
+                name: activeUser.name,
+                surname: activeUser.surname,
+                email: activeUser.email,
+                password: activeUser.password,
+            });
+
+            setError({
+                nameError: '',
+                surnameError: '',
+                emailError: '',
+                passwordError: '',
+            })
         }
-    }, [activeUser])
+    }
+
+    useEffect(() => {
+        fillState();
+    }, [])
 
     const {name, surname, email, password} = state;
     const {nameError, surnameError, emailError, passwordError} = error;
@@ -76,24 +94,30 @@ const ModalContent = ({closeModal}) => {
     const handleRegister = () => {
 
         if (!nameError && !surnameError && !emailError && !passwordError) {
-            // dispatch an action
-            // move user to success screen
 
-            // TODO setting a timeout to show a little nice loader on the screen
-            dispatch(callToRegisterUserAction(
-                new Date().toString(),
-                name,
-                surname,
-                email,
-                password
-            ));
+            if(activeUser && Object.keys(activeUser).length > 0){
+                dispatch(callToUpdateUserAction(
+                    activeUser.id,
+                    name,
+                    surname,
+                    email,
+                    password
+                    ));
+            } else {
+                dispatch(callToRegisterUserAction(
+                    new Date().toString(),
+                    name,
+                    surname,
+                    email,
+                    password
+                ));
+            }
 
-            console.log('handleRegister', isLoading);
             setState(initialState);
             setError(initialErrorState);
             setTimeout(() => {
                 closeModal();
-            }, 2000);
+            }, 3000);
         } else {
             setShowErrors(true);
         }
@@ -107,6 +131,7 @@ const ModalContent = ({closeModal}) => {
         });
     }
 
+    console.log('isLoading', isLoading);
 
     return (
         <div className={'registration-container'}>
@@ -168,7 +193,11 @@ const ModalContent = ({closeModal}) => {
                 name={'register-btn'}
                 onClick={handleRegister}
                 onKeyDown={(event) => handleKeyDown(event, 'register')}>
-                Register
+                {
+                    activeUser ?
+                        'Update' :
+                        'Register'
+                }
             </Button>
         </div>
     )

@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import '../styles/LoginRegisterContainer.scss';
-import {Input, Button} from "../components/index";
+import {Input, Button, ModalComponent} from "../components/index";
 import {useDispatch} from "react-redux";
 
-const LoginRegisterContainer = ({openModal}) => {
+const LoginRegisterContainer = () => {
+    const [modalIsOpen, setIsModalOpen] = useState(false);
+
     const dispatch = useDispatch();
     const [state, setState] = useState({
         email: "",
@@ -37,9 +39,11 @@ const LoginRegisterContainer = ({openModal}) => {
     }
 
     const showRegisterPopup = () => {
-        if(openModal){
-            openModal();
-        }
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
     }
 
     const handleChange = (event, name) => {
@@ -53,8 +57,9 @@ const LoginRegisterContainer = ({openModal}) => {
     const {email, password} = state;
 
     return (
-        <div className={'login-register-container'}>
-            <div className={'login-register-wrapper'}>
+        <>
+            <div className={'login-register-container'}>
+                <div className={'login-register-wrapper'}>
                     <Input
                         customInputClass={'login-input'}
                         value={email}
@@ -89,8 +94,17 @@ const LoginRegisterContainer = ({openModal}) => {
                         onKeyDown={(event) => handleKeyDown(event, 'register')}>
                         Create New Account
                     </Button>
+                </div>
             </div>
-        </div>
+            <ModalComponent
+                closeModal={closeModal}
+                openModal={showRegisterPopup}
+                modalIsOpen={modalIsOpen}
+                contentLabel={"Registration"}
+                heading2={'Sign Up'}
+                text={"It's quick and easy."}
+            />
+        </>
     );
 }
 
