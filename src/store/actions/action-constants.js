@@ -1,2 +1,8 @@
 export const USER_LOGGED_IN = 'USER_LOGGED_IN';
-export const NEW_USER_JOINED = 'NEW_USER_JOINED';
+
+
+// registration
+export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
+export const REGISTER_USER_FAIL = 'REGISTER_USER_FAIL';
+export const SEND_REGISTER_USER = 'SEND_REGISTER_USER';
+

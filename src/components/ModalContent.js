@@ -1,9 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Input} from "./generic-components/Input";
 import {Button} from "./generic-components/Button";
+import {useDispatch, useSelector} from "react-redux";
+
+import {DotLoader} from "react-spinners";
+
 
 import '../styles/LoginRegisterContainer.scss';
 import '../styles/RegistrationContainer.scss';
+import {callToRegisterUserAction} from "../store/actions/login-actions";
 
 const initialState = {
     name: "",
@@ -12,15 +17,30 @@ const initialState = {
     password: "",
 }
 
-const ModalContent = ({closeModal}) => {
+const initialErrorState = {
+    nameError: 'Invalid name',
+    surnameError: 'Invalid surname',
+    emailError: 'Invalid email',
+    passwordError: 'Invalid password',
+}
 
-    // const [name, setName] = useState('');
-    // const [surname, setSurname] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
+const ModalContent = ({closeModal}) => {
+    const dispatch = useDispatch();
+    const isLoading = useSelector(state => state.users.isLoading);
+    const activeUser = useSelector(state => state.users.activeUser);
 
     const [state, setState] = useState(initialState);
+    const [error, setError] = useState(initialErrorState);
+    const [showErrors, setShowErrors] = useState(false);
 
+    useEffect(() => {
+        if(activeUser){
+            alert('You Registered and logged in in successfully');
+        }
+    }, [activeUser])
+
+    const {name, surname, email, password} = state;
+    const {nameError, surnameError, emailError, passwordError} = error;
 
     const handleKeyDown = (event, name) => {
         if (event.key === ' ' || event.key === 'Enter') {
@@ -35,14 +55,48 @@ const ModalContent = ({closeModal}) => {
         }
     }
 
+    const handleBlur = (event, name) => {
+        const val = event.target && event.target.value && event.target.value.trim();
+        const errorMessage = `Invalid ${name}`;
+        const stateValue = `${name}Error`;
+
+        if (!val || val.length === 0) {
+            setError({
+                ...error,
+                [stateValue]: errorMessage,
+            });
+        } else {
+            setError({
+                ...error,
+                [stateValue]: '',
+            });
+        }
+    }
+
     const handleRegister = () => {
-        // dispatch an action
-        // move user to success screen
 
-        console.log('handleRegister', state);
-        setState(initialState);
+        if (!nameError && !surnameError && !emailError && !passwordError) {
+            // dispatch an action
+            // move user to success screen
 
-        closeModal();
+            // TODO setting a timeout to show a little nice loader on the screen
+            dispatch(callToRegisterUserAction(
+                new Date().toString(),
+                name,
+                surname,
+                email,
+                password
+            ));
+
+            console.log('handleRegister', isLoading);
+            setState(initialState);
+            setError(initialErrorState);
+            setTimeout(() => {
+                closeModal();
+            }, 2000);
+        } else {
+            setShowErrors(true);
+        }
     }
 
     const handleChange = (event, name) => {
@@ -52,45 +106,62 @@ const ModalContent = ({closeModal}) => {
             [name]: val,
         });
     }
-    const {name, surname, email, password } = state;
+
 
     return (
         <div className={'registration-container'}>
+            {
+                isLoading &&
+                    <div className={'registration-loading-overlay'}>
+                        <DotLoader
+                            color={'#1877f2;'} size={150} />
+                    </div>
+
+            }
             <div className="name-and-surname-inputs-container">
                 <Input
                     customInputClass={'register-input register-input-name'}
                     value={name}
+                    showErrors={showErrors}
+                    error={nameError}
                     placeholder="Name"
                     type={'text'}
                     name='name'
-                    secureTextEntry
+                    onBlur={handleBlur}
                     onChange={handleChange}/>
 
                 <Input
                     customInputClass={'register-input register-input-surname'}
                     value={surname}
+                    showErrors={showErrors}
+                    error={surnameError}
                     placeholder="Surname"
                     type={'text'}
                     name='surname'
-                    secureTextEntry
+                    onBlur={handleBlur}
                     onChange={handleChange}/>
             </div>
 
             <Input
                 customInputClass={'register-input register-input-email'}
                 value={email}
+                showErrors={showErrors}
+                error={emailError}
                 placeholder="Email"
                 type={'text'}
                 name='email'
-                secureTextEntry
+                onBlur={handleBlur}
                 onChange={handleChange}/>
 
             <Input
                 customInputClass={'register-input register-input-password'}
                 value={password}
+                showErrors={showErrors}
+                error={passwordError}
                 placeholder="Password"
                 type={'password'}
                 name='password'
+                onBlur={handleBlur}
                 onChange={handleChange}/>
 
             <Button

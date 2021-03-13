@@ -1,4 +1,4 @@
-import {USER_LOGGED_IN} from '../actions/action-constants';
+import {REGISTER_USER, USER_LOGGED_IN} from '../actions/action-constants';
 
 const initialState = {
     user: {},

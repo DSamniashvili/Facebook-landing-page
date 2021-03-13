@@ -6,8 +6,6 @@ import Modal from 'react-modal';
 import '../styles/ContentContainer.scss';
 import {ModalContent} from "../components";
 
-Modal.setAppElement('.App');
-
 const customStyles = {
     content : {
         top                   : '50%',
@@ -39,12 +37,11 @@ const ContentContainer = () => {
                             isOpen={modalIsOpen}
                             onRequestClose={closeModal}
                             style={customStyles}
-                            contentLabel="Example Modal"
+                            contentLabel="Registration"
                         >
-
-                            <h2>Sign Up</h2>
-                            <p>It's quick and easy.</p>
-                            {/*<button onClick={closeModal}>close</button>*/}
+                            <h2 className={'registration-heading-text'}>Sign Up</h2>
+                            <p className={'registration-secondary-text'}>It's quick and easy.</p>
+                            <button onClick={closeModal} className={'modal-close-icon'}>X</button>
                             <ModalContent closeModal={closeModal} />
                         </Modal>
                 }

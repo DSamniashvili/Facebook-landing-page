@@ -1,9 +1,35 @@
+@import "../constants/COLORS";
+
 .content-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 20px;
   position: relative;
-  height: 500px;
+  //height: 500px;
+
+  justify-content: center;
+  align-items: center;
+}
+
+
+.registration-heading-text {
+  color: $textBlack;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.registration-secondary-text {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.modal-close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: transparent;
+  cursor: pointer;
 }
