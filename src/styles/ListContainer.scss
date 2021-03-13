@@ -1,0 +1,44 @@
+@import "../constants/COLORS";
+
+.list-container {
+  width: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 16px 0;
+
+  padding: 16px;
+  box-sizing: border-box;
+
+  h1, h2, h3 {
+    margin: 10px 0;
+    font-weight: normal;
+  }
+
+  h1 {
+    font-size: 40px;
+    color: $blue;
+
+  }
+  h2 {
+    font-size: 28px;
+    line-height: 32px;
+  }
+
+  p {
+    margin: 0;
+    color: $lightGrey;
+  }
+
+  .text-facebook {
+    color: $blue;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 32px;
+  }
+}
