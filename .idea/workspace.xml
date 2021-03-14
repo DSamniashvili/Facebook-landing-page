@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60313f62-2ef5-4ed4-8884-60b92326c070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/general-functions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/containers/SuccessPage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/SuccessPage.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ModalContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ModalContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants/COLORS.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/COLORS.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/LoginRegisterContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/LoginRegisterContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/action-constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/action-constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/login-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/login-actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/user-reducer.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/users-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/users-reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/LoginRegisterContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/LoginRegisterContainer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/ListContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/ListContainer.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1615630684861</updated>
       <workItem from="1615630686337" duration="36228000" />
-      <workItem from="1615702499802" duration="11005000" />
+      <workItem from="1615702499802" duration="15386000" />
     </task>
     <servers />
   </component>

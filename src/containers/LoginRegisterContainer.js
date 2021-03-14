@@ -4,12 +4,20 @@ import {Input, Button, ModalComponent} from "../components/index";
 import {useDispatch, useSelector} from "react-redux";
 import {sendLoginRequest} from "../store/actions/login-actions";
 import {BeatLoader} from "react-spinners";
+import { useHistory } from "react-router-dom";
 
 const LoginRegisterContainer = () => {
     const [modalIsOpen, setIsModalOpen] = useState(false);
     const errorMessage = useSelector(state => state.users.errorMessage);
     const isLoggingIn = useSelector(state => state.users.isLoggingIn);
     const loggedInUser = useSelector(state => state.users.loggedInUser);
+
+    const history = useHistory();
+
+    const routeChange = () => {
+        let path = `/successPage`;
+        history.push(path);
+    }
 
     const dispatch = useDispatch();
     const [state, setState] = useState({
@@ -22,7 +30,12 @@ const LoginRegisterContainer = () => {
             email: '',
             password: '',
         });
-    }, [loggedInUser])
+
+        if(loggedInUser){
+            routeChange();
+        }
+
+    }, [loggedInUser]);
 
     const handleKeyDown = (event, name) => {
         if (event.key === ' ' || event.key === 'Enter') {

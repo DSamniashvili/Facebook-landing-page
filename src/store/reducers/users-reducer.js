@@ -10,7 +10,7 @@ import {
     DELETE_USER,
     SEND_AUTHENTICATE_USER,
     START_AUTHENTICATE_USER,
-    SEND_AUTHENTICATE_USER_FAIL,
+    SEND_AUTHENTICATE_USER_FAIL, LOGOUT_USER,
 } from '../actions/action-constants';
 import User from "../../models/user-model";
 
@@ -153,6 +153,12 @@ const users = function (state = initialState, action) {
                 ...state,
                 isLoggingIn: false,
                 errorMessage: 'Could not find user.',
+            }
+
+        case LOGOUT_USER:
+            return {
+                ...state,
+                loggedInUser: null,
             }
         default:
             return state;

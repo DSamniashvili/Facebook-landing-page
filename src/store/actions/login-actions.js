@@ -11,6 +11,7 @@ import {
     START_AUTHENTICATE_USER,
     SEND_AUTHENTICATE_USER,
     SEND_AUTHENTICATE_USER_FAIL,
+    LOGOUT_USER,
 } from "./action-constants";
 import {validateEmail, validatePassword} from "../../utils/general-functions";
 
@@ -138,5 +139,11 @@ export const sendLoginRequest = (inputEmail, inputPassword) => {
                 });
             }
         }, TIMEOUT_MS);
+    }
+}
+
+export const handleLogoutAction = () => {
+    return {
+        type: LOGOUT_USER,
     }
 }

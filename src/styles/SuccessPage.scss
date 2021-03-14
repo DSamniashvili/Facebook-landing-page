@@ -1,0 +1,11 @@
+.success-page-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .welcome-text-heading {
+    font-size: 3em;
+    margin: 20px 0;
+  }
+}
