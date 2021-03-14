@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import Modal from "react-modal";
 import {ModalContent} from "../ModalContent";
+import {CloseIcon} from "../index";
+
+import '../../styles/ContentContainer.scss';
 
 const customStyles = {
     content : {
@@ -30,7 +33,8 @@ const ModalComponent = ({closeModal, openModal, modalIsOpen, contentLabel, headi
             >
                 <h2 className={'registration-heading-text'}>{heading2}</h2>
                 <p className={'registration-secondary-text'}>{text}</p>
-                <button onClick={closeModalBound} className={'modal-close-icon'}>X</button>
+                <CloseIcon onCloseIconClick={closeModalBound} customClassName={'modal-close-icon'} />
+                {/* <button onClick={closeModalBound} className={'modal-close-icon'}>X</button>*/}
                 <ModalContent
                     closeModal={closeModal}
                     currentUserId={currentUserId}/>

@@ -7,6 +7,7 @@ import {
     CLEAR_CURRENT_USER,
     SEND_UPDATE_USER,
     UPDATE_USER_FAIL,
+    DELETE_USER,
 } from "./action-constants";
 
 // function timeout(ms) {
@@ -95,6 +96,12 @@ export const callToUpdateUserAction = (id, name, surname, email, password) => {
 export const setCurrentUserAction = userId => {
     return {
         type: SET_CURRENT_USER,
+        userId,
+    }
+}
+export const deleteUserAction = userId => {
+    return {
+        type: DELETE_USER,
         userId,
     }
 }

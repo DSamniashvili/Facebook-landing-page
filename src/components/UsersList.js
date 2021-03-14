@@ -2,7 +2,7 @@ import React from 'react';
 import {UserCard} from "./index";
 import {useSelector} from "react-redux";
 
-const UsersList = ({handleUserClick}) => {
+const UsersList = ({handleUserClick, handleUserDelete}) => {
     const users = useSelector(state => state.users.users);
 
         return (
@@ -11,6 +11,7 @@ const UsersList = ({handleUserClick}) => {
                     users.map((user, index) => {
                         return <UserCard
                             onClick={handleUserClick}
+                            onDelete={handleUserDelete}
                             key={index}
                             user={user}/>
                     })

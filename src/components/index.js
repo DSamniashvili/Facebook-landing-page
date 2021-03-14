@@ -4,3 +4,4 @@ export * from './ModalContent';
 export * from './generic-components/UserCard';
 export * from './generic-components/ModalComponent';
 export * from './UsersList';
+export * from './generic-components/CloseIcon';

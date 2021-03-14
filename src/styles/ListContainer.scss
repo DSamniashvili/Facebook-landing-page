@@ -11,25 +11,37 @@
   padding: 16px;
   box-sizing: border-box;
 
+  overflow: hidden;
+
   h1, h2, h3 {
     margin: 10px 0;
     font-weight: normal;
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 3.5px;
     color: $blue;
-
   }
 
   h2 {
-    font-size: 42px;
+    font-size: 3em;
     line-height: 32px;
   }
 
   p {
     margin: 0;
     color: $lightGrey;
+    font-size: 1em;
+  }
+
+  .empty-list-heading {
+    font-size: 3.5em;
+    font-weight: bold;
+  }
+
+  .empty-list-text {
+    font-size: 1.8em;
+    font-weight: normal;
   }
 
   .text-facebook {
@@ -38,7 +50,7 @@
   }
 
   h3 {
-    font-size: 28px;
+    font-size: 1.8em;
     font-weight: normal;
     line-height: 32px;
   }
@@ -51,6 +63,7 @@
 
     max-height: 456px;
     overflow-y: scroll;
+    padding-right: 32px;
 
     .user-card-container {
       position: relative;

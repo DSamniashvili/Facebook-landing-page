@@ -36,7 +36,7 @@ const ModalContent = ({closeModal, currentUserId}) => {
     const activeUser = useSelector(state => state.users.activeUser);
 
     const fillState = () => {
-        if(activeUser && Object.keys(activeUser).length > 0){
+        if(activeUser){
             setState({
                 name: activeUser.name,
                 surname: activeUser.surname,
@@ -95,7 +95,7 @@ const ModalContent = ({closeModal, currentUserId}) => {
 
         if (!nameError && !surnameError && !emailError && !passwordError) {
 
-            if(activeUser && Object.keys(activeUser).length > 0){
+            if(activeUser){
                 dispatch(callToUpdateUserAction(
                     activeUser.id,
                     name,

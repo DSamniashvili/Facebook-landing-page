@@ -7,6 +7,7 @@ import {
     SEND_UPDATE_USER,
     CLEAR_CURRENT_USER,
     UPDATE_USER_FAIL,
+    DELETE_USER,
 } from '../actions/action-constants';
 import User from "../../models/user-model";
 
@@ -15,14 +16,14 @@ const dummyUsers = [
         id: "Sat Mar 13 2021 21:42:10 GMT+0400 (Georgia Standard Time)",
         name: "Dea",
         surname: "Samniashvili",
-        email: "dea@dea.com",
+        email: "deasamniashvili@yahoo.com",
         password: "password",
     },
 ]
 
 const initialState = {
     users: dummyUsers,
-    activeUser: {},
+    activeUser: null,
     isLoading: false,
 }
 
@@ -42,7 +43,7 @@ const users = function (state = initialState, action) {
         case CLEAR_CURRENT_USER:
             return {
                 ...state,
-                activeUser: {},
+                activeUser: null,
             }
 
         case SEND_REGISTER_USER:
@@ -74,7 +75,7 @@ const users = function (state = initialState, action) {
                 return {
                     ...state,
                     isLoading: false,
-                    activeUser: {},
+                    activeUser: null,
                     users: updatedUsers,
                 }
             }
@@ -106,6 +107,12 @@ const users = function (state = initialState, action) {
                 ...state,
                 isLoading: false,
             };
+
+        case DELETE_USER:
+            return {
+                ...state,
+                users: state.users.filter(user => user.id !== action.userId),
+            }
 
         default:
             return state;

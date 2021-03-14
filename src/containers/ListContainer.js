@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import '../styles/ListContainer.scss';
 import {ModalComponent, UsersList} from "../components";
-import {clearCurrentUserAction, setCurrentUserAction} from "../store/actions/login-actions";
+import {clearCurrentUserAction, deleteUserAction, setCurrentUserAction} from "../store/actions/login-actions";
 
 const ListContainer = () => {
     const dispatch = useDispatch();
@@ -24,21 +24,27 @@ const ListContainer = () => {
         setIsModalOpen(true);
         dispatch(setCurrentUserAction(userId));
     }
+    const handleUserDelete = (userId) => {
+        dispatch(deleteUserAction(userId));
+    }
+
+    const showScroll = users && users.length > 6;
 
     return (
         <>
-            <div className={'list-container'}>
+            <div className={`list-container ${users && users.length > 0 ? 'list-container-filled' : 'list-container-empty'} ${showScroll && 'scrollable'}`}>
                 {
                     users && users.length > 0 ?
                         <>
                             <h2 className={'text-facebook'}>Facebook</h2>
                             <h3>Recent Logins</h3>
                             <p>Click your picture or add an account.</p>
-                            <UsersList handleUserClick={handleUserClick}/>
+                            <UsersList handleUserClick={handleUserClick}
+                                       handleUserDelete={handleUserDelete}/>
                         </> :
                         <>
-                            <h1>Facebook</h1>
-                            <h2>Connect with friends and the world around you on Facebook.</h2>
+                            <h1 className={'heading-text empty-list-heading'}>Facebook</h1>
+                            <h2 className={'heading-text empty-list-text'}>Connect with friends and the world around you on Facebook.</h2>
 
                         </>
                 }

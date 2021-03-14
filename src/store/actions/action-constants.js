@@ -14,3 +14,6 @@ export const UPDATE_USER = 'UPDATE_USER';
 export const SEND_UPDATE_USER = 'SEND_UPDATE_USER';
 export const UPDATE_USER_FAIL = 'UPDATE_USER_FAIL';
 
+//delete
+export const DELETE_USER = 'DELETE_USER';
+
