@@ -2,19 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="60313f62-2ef5-4ed4-8884-60b92326c070" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/generic-components/CloseIcon.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/general-functions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/ModalContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ModalContent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UsersList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UsersList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/generic-components/ModalComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/generic-components/ModalComponent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/generic-components/UserCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/generic-components/UserCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/ListContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/ListContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/constants/COLORS.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/COLORS.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/LoginRegisterContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/LoginRegisterContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/action-constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/action-constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/login-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/login-actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/user-reducer.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/users-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/users-reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/ContentContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/ContentContainer.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/ListContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/ListContainer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/LoginRegisterContainer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/LoginRegisterContainer.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +35,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../kme-web" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -59,7 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1615630684861</updated>
       <workItem from="1615630686337" duration="36228000" />
-      <workItem from="1615702499802" duration="3457000" />
+      <workItem from="1615702499802" duration="11005000" />
     </task>
     <servers />
   </component>

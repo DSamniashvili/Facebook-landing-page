@@ -1,16 +1,28 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import '../styles/LoginRegisterContainer.scss';
 import {Input, Button, ModalComponent} from "../components/index";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {sendLoginRequest} from "../store/actions/login-actions";
+import {BeatLoader} from "react-spinners";
 
 const LoginRegisterContainer = () => {
     const [modalIsOpen, setIsModalOpen] = useState(false);
+    const errorMessage = useSelector(state => state.users.errorMessage);
+    const isLoggingIn = useSelector(state => state.users.isLoggingIn);
+    const loggedInUser = useSelector(state => state.users.loggedInUser);
 
     const dispatch = useDispatch();
     const [state, setState] = useState({
         email: "",
         password: "",
     });
+
+    useEffect(() => {
+        setState({
+            email: '',
+            password: '',
+        });
+    }, [loggedInUser])
 
     const handleKeyDown = (event, name) => {
         if (event.key === ' ' || event.key === 'Enter') {
@@ -29,13 +41,7 @@ const LoginRegisterContainer = () => {
     }
 
     const handleLogin = () => {
-        console.log('handleLogin', state);
-        // dispatch(signInUserAction({ email, password }));
-
-        setState({
-            email: '',
-            password: '',
-        });
+        dispatch(sendLoginRequest(email, password));
     }
 
     const showRegisterPopup = () => {
@@ -59,6 +65,14 @@ const LoginRegisterContainer = () => {
     return (
         <>
             <div className={'login-register-container'}>
+                {
+                    isLoggingIn &&
+                    <div className={'login-loading-overlay'}>
+                        <BeatLoader
+                            color={'#1877f2'} size={20} />
+                    </div>
+
+                }
                 <div className={'login-register-wrapper'}>
                     <Input
                         customInputClass={'login-input'}
@@ -84,9 +98,17 @@ const LoginRegisterContainer = () => {
                         onKeyDown={(event) => handleKeyDown(event, 'login')}>
                         Log in
                     </Button>
-                    <div className={'forgot-password-container'} tabIndex={-1}>
-                        <p className={'forgot-password-text'}> Forgot password? </p>
-                    </div>
+                    {
+                        errorMessage &&
+                            <div className={'error-message-container'} tabIndex={-1}>
+                                <p className={'error-message-text'}> {errorMessage}</p>
+                            </div>
+                    }
+                    {
+                        <div className={'forgot-password-container'} tabIndex={-1}>
+                            <p className={'forgot-password-text'}> Forgot password? </p>
+                        </div>
+                    }
 
                     <Button
                         name={'new-account-btn'}

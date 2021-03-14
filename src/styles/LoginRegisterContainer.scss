@@ -6,6 +6,19 @@
   display: flex;
   justify-content: center;
 
+  position: relative;
+
+  .login-loading-overlay {
+    width: 100%;
+    z-index: 999;
+    height: 60%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
   .login-register-wrapper {
     height: 300px;
     padding: 16px;
@@ -27,10 +40,23 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 20px 0;
+      margin: 10px 0;
 
       .forgot-password-text {
         color: $blue;
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
+    .error-message-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 10px 0;
+
+      .error-message-text {
+        color: $errorRed;
         font-size: 14px;
         font-weight: 400;
       }

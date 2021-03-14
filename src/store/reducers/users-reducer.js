@@ -8,6 +8,9 @@ import {
     CLEAR_CURRENT_USER,
     UPDATE_USER_FAIL,
     DELETE_USER,
+    SEND_AUTHENTICATE_USER,
+    START_AUTHENTICATE_USER,
+    SEND_AUTHENTICATE_USER_FAIL,
 } from '../actions/action-constants';
 import User from "../../models/user-model";
 
@@ -24,7 +27,10 @@ const dummyUsers = [
 const initialState = {
     users: dummyUsers,
     activeUser: null,
+    loggedInUser: null,
     isLoading: false,
+    isLoggingIn: false,
+    errorMessage: '',
 }
 
 const users = function (state = initialState, action) {
@@ -51,6 +57,14 @@ const users = function (state = initialState, action) {
             return {
                 ...state,
                 isLoading: true,
+                errorMessage: '',
+            }
+
+        case START_AUTHENTICATE_USER:
+            return {
+                ...state,
+                isLoggingIn: true,
+                errorMessage: '',
             }
 
         case UPDATE_USER:
@@ -106,6 +120,14 @@ const users = function (state = initialState, action) {
             return {
                 ...state,
                 isLoading: false,
+                errorMessage: action.payload.errorMessage,
+            };
+
+        case SEND_AUTHENTICATE_USER_FAIL:
+            return {
+                ...state,
+                isLoggingIn: false,
+                errorMessage: action.payload.errorMessage,
             };
 
         case DELETE_USER:
@@ -114,6 +136,24 @@ const users = function (state = initialState, action) {
                 users: state.users.filter(user => user.id !== action.userId),
             }
 
+        case SEND_AUTHENTICATE_USER:
+            const {inputEmail, inputPassword} = action.payload;
+            const userToAuthenticate = state.users.find(user => user.email === inputEmail && user.password === inputPassword);
+
+            if (userToAuthenticate) {
+                return {
+                    ...state,
+                    isLoggingIn: false,
+                    loggedInUser: userToAuthenticate,
+                    errorMessage: '',
+                }
+            }
+
+            return {
+                ...state,
+                isLoggingIn: false,
+                errorMessage: 'Could not find user.',
+            }
         default:
             return state;
     }

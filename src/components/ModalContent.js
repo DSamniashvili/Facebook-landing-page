@@ -9,6 +9,7 @@ import {DotLoader} from "react-spinners";
 import '../styles/LoginRegisterContainer.scss';
 import '../styles/RegistrationContainer.scss';
 import {callToRegisterUserAction, callToUpdateUserAction} from "../store/actions/login-actions";
+import {validateEmail, validatePassword} from "../utils/general-functions";
 
 const initialState = {
     name: "",
@@ -78,7 +79,10 @@ const ModalContent = ({closeModal, currentUserId}) => {
         const errorMessage = `Invalid ${name}`;
         const stateValue = `${name}Error`;
 
-        if (!val || val.length === 0) {
+        const validEmail = validateEmail(email);
+        const validPassword = validatePassword(password);
+
+        if (!val || val.length === 0 || (name ==='password' && !validPassword) || (name ==='email' && !validEmail)) {
             setError({
                 ...error,
                 [stateValue]: errorMessage,
@@ -93,7 +97,10 @@ const ModalContent = ({closeModal, currentUserId}) => {
 
     const handleRegister = () => {
 
-        if (!nameError && !surnameError && !emailError && !passwordError) {
+        const validEmail = !emailError && validateEmail(email);
+        const validPassword = !passwordError && validatePassword(password);
+
+        if (!nameError && !surnameError && validEmail && validPassword) {
 
             if(activeUser){
                 dispatch(callToUpdateUserAction(
@@ -130,8 +137,6 @@ const ModalContent = ({closeModal, currentUserId}) => {
             [name]: val,
         });
     }
-
-    console.log('isLoading', isLoading);
 
     return (
         <div className={'registration-container'}>
@@ -183,7 +188,7 @@ const ModalContent = ({closeModal, currentUserId}) => {
                 value={password}
                 showErrors={showErrors}
                 error={passwordError}
-                placeholder="Password"
+                placeholder="Password (Min 4 chars)"
                 type={'password'}
                 name='password'
                 onBlur={handleBlur}

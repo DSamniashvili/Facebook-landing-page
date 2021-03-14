@@ -8,25 +8,26 @@ import {
     SEND_UPDATE_USER,
     UPDATE_USER_FAIL,
     DELETE_USER,
+    START_AUTHENTICATE_USER,
+    SEND_AUTHENTICATE_USER,
+    SEND_AUTHENTICATE_USER_FAIL,
 } from "./action-constants";
+import {validateEmail, validatePassword} from "../../utils/general-functions";
 
-// function timeout(ms) {
-//     return new Promise(resolve => setTimeout(resolve, ms));
-// }
+// Setting a 3sec timeout to "fake" login/register requests.
+const TIMEOUT_MS = 3000;
+
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 export const callToRegisterUserAction = (id, name, surname, email, password) => {
     return dispatch => {
-
-        let userRegisterPromise = new Promise((resolve, reject) => {
-            dispatch({
-                type: SEND_REGISTER_USER
-            });
-
-            setTimeout(() => {
-                resolve('User authenticated successfully');
-            }, 3000);
+        dispatch({
+            type: SEND_REGISTER_USER
         });
 
+        let userRegisterPromise = timeout(TIMEOUT_MS);
         userRegisterPromise.then((response) => {
             console.log("User Login response: " + response);
 
@@ -44,7 +45,6 @@ export const callToRegisterUserAction = (id, name, surname, email, password) => 
         })
             .catch(err => {
                 console.log('User Login response: ', err);
-
                 dispatch({
                     type: REGISTER_USER_FAIL,
                     payload: {
@@ -55,18 +55,14 @@ export const callToRegisterUserAction = (id, name, surname, email, password) => 
     }
 }
 
+
 export const callToUpdateUserAction = (id, name, surname, email, password) => {
     return dispatch => {
-
-        let userUpdatePromise = new Promise((resolve, reject) => {
-            dispatch({
-                type: SEND_UPDATE_USER,
-            });
-
-            setTimeout(() => {
-                resolve('User updated successfully');
-            }, 3000);
+        dispatch({
+            type: SEND_UPDATE_USER,
         });
+
+        let userUpdatePromise = timeout(TIMEOUT_MS);
 
         userUpdatePromise.then((response) => {
             dispatch({
@@ -112,32 +108,35 @@ export const clearCurrentUserAction = () => {
     }
 }
 
+export const sendLoginRequest = (inputEmail, inputPassword) => {
+    return dispatch => {
+        dispatch({
+            type: START_AUTHENTICATE_USER,
+        });
 
-// const callToAuthenticate = ({inputUserName, inputPassword}) => {
-//     let {username, password} = state.loginInitials;
-//     password = cryptr.decrypt(password);
-//
-//     const inValidUserName = !inputUserName || inputUserName.length === 0 || username !== inputUserName;
-//     const inValidPassword = !inputPassword || inputPassword.length === 0 || password !== inputPassword;
-//
-//     let userLoginPromise = new Promise((resolve, reject) => {
-//         dispatch({type: 'SEND_AUTHENTICATE_USER', payload: {}});
-//
-//         if (inValidUserName || inValidPassword) {
-//             reject('Could not authenticate user');
-//         }
-//
-//         setTimeout(function () {
-//             resolve('User authenticated successfully');
-//         }, 500);
-//     })
-//
-//     userLoginPromise.then((response) => {
-//         console.log("User Login response: " + response)
-//         dispatch({type: 'AUTHENTICATE_USER', payload: {isAuth: true}});
-//     })
-//         .catch(err => {
-//             console.log('User Login response: ', err);
-//             dispatch({type: 'AUTHENTICATE_USER', payload: {isAuth: false}});
-//         })
-// }
+        // const validEmail = inputEmail && inputEmail.includes('@');
+        const validEmail = validateEmail(inputEmail);
+        const validPassword = validatePassword(inputPassword);
+
+        console.log('validPassword', validPassword);
+
+        setTimeout(() => {
+            if(validEmail && validPassword){
+                dispatch({
+                    type: SEND_AUTHENTICATE_USER,
+                    payload: {
+                        inputEmail,
+                        inputPassword,
+                    }
+                });
+            } else {
+                dispatch({
+                    type: SEND_AUTHENTICATE_USER_FAIL,
+                    payload: {
+                        errorMessage: 'Invalid user input. Please provide correct username and password.',
+                    }
+                });
+            }
+        }, TIMEOUT_MS);
+    }
+}
