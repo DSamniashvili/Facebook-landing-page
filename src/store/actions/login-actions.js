@@ -14,9 +14,10 @@ import {
     LOGOUT_USER,
 } from "./action-constants";
 import {validateEmail, validatePassword} from "../../utils/general-functions";
+import constants from "../../constants/GENERAL";
 
 // Setting a 3sec timeout to "fake" login/register requests.
-const TIMEOUT_MS = 3000;
+const {TIMEOUT_MS} = constants;
 
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -115,11 +116,8 @@ export const sendLoginRequest = (inputEmail, inputPassword) => {
             type: START_AUTHENTICATE_USER,
         });
 
-        // const validEmail = inputEmail && inputEmail.includes('@');
         const validEmail = validateEmail(inputEmail);
         const validPassword = validatePassword(inputPassword);
-
-        console.log('validPassword', validPassword);
 
         setTimeout(() => {
             if(validEmail && validPassword){
@@ -134,7 +132,7 @@ export const sendLoginRequest = (inputEmail, inputPassword) => {
                 dispatch({
                     type: SEND_AUTHENTICATE_USER_FAIL,
                     payload: {
-                        errorMessage: 'Invalid user input. Please provide correct username and password.',
+                        errorMessage: 'Please provide correct username and password.',
                     }
                 });
             }

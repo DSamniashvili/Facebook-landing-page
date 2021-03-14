@@ -64,6 +64,19 @@
     justify-content: center;
     align-items: center;
 
+    .users-cards-container {
+      padding-right: unset;
+
+      .user-card-container {
+        margin: 15px 7px;
+      }
+    }
+
+    .list-container-filled {
+      justify-content: center;
+      align-items: center;
+    }
+
     .list-container-empty {
       width: 400px;
       justify-content: center;

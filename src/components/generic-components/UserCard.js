@@ -1,8 +1,6 @@
 import React from 'react';
-import {ReactComponent as CloseIconSvg} from '../../assets/images/closeIcon.svg';
-import userImage from '../../assets/images/userIcon.png'
-import girl from '../../assets/images/girl.jpg'
 import {CloseIcon} from "./CloseIcon";
+import constants from "../../constants/GENERAL";
 
 const UserCard = ({user, onClick, onDelete}) => {
     const onClickBound = () => {
@@ -20,7 +18,10 @@ const UserCard = ({user, onClick, onDelete}) => {
         <div className={'user-card-container'}>
             <div onClick={onClickBound}>
                 <div className={'user-card-image-wrapper'}>
-                    <img src={girl} className={'user-card-image'}/>
+                    <img
+                        src={constants.apis.randomImages}
+                         className={'user-card-image'}
+                         alt={'user-avatar'}/>
                 </div>
                 <div className={'user-card-name-wrapper'}>
                     <p className={'user-card-name'}>{user.name}</p>

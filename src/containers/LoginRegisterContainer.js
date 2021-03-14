@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import '../styles/LoginRegisterContainer.scss';
-import {Input, Button, ModalComponent} from "../components/index";
 import {useDispatch, useSelector} from "react-redux";
+import {Input, Button, ModalComponent} from "../components/index";
 import {sendLoginRequest} from "../store/actions/login-actions";
+import '../styles/LoginRegisterContainer.scss';
 import {BeatLoader} from "react-spinners";
 import { useHistory } from "react-router-dom";
+import constants from '../constants/GENERAL';
 
 const LoginRegisterContainer = () => {
     const [modalIsOpen, setIsModalOpen] = useState(false);
+
     const errorMessage = useSelector(state => state.users.errorMessage);
     const isLoggingIn = useSelector(state => state.users.isLoggingIn);
     const loggedInUser = useSelector(state => state.users.loggedInUser);
@@ -15,7 +17,7 @@ const LoginRegisterContainer = () => {
     const history = useHistory();
 
     const routeChange = () => {
-        let path = `/successPage`;
+        let path = constants.paths.successPage;
         history.push(path);
     }
 
@@ -38,7 +40,7 @@ const LoginRegisterContainer = () => {
     }, [loggedInUser]);
 
     const handleKeyDown = (event, name) => {
-        if (event.key === ' ' || event.key === 'Enter') {
+        if (event.key === ' ' || event.key === constants.keyboardKeys.enter) {
             switch (name) {
                 case 'login':
                     handleLogin();
@@ -46,7 +48,6 @@ const LoginRegisterContainer = () => {
                 case 'register':
                     showRegisterPopup();
                     break;
-
                 default:
                     break;
             }
@@ -119,7 +120,7 @@ const LoginRegisterContainer = () => {
                     }
                     {
                         <div className={'forgot-password-container'} tabIndex={-1}>
-                            <p className={'forgot-password-text'}> Forgot password? </p>
+                            <p className={'forgot-password-text'}>Forgot password? </p>
                         </div>
                     }
 

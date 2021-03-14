@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {handleLogoutAction} from "../store/actions/login-actions";
 import '../styles/SuccessPage.scss';
+import constants from "../constants/GENERAL";
 
 const SuccessPage = () => {
     const loggedInUser = useSelector(state => state.users.loggedInUser);
@@ -10,7 +11,6 @@ const SuccessPage = () => {
     const dispatch = useDispatch();
 
     const handleLogout = () => {
-        console.log('handleLogout');
         dispatch(handleLogoutAction());
         navigateToMainPage();
     }
@@ -19,7 +19,7 @@ const SuccessPage = () => {
         if (history.goBack()) {
             history.goBack();
         } else {
-            let path = `/`;
+            let path = constants.paths.homepage;
             history.push(path);
         }
     }

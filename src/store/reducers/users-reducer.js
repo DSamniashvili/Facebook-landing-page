@@ -10,7 +10,8 @@ import {
     DELETE_USER,
     SEND_AUTHENTICATE_USER,
     START_AUTHENTICATE_USER,
-    SEND_AUTHENTICATE_USER_FAIL, LOGOUT_USER,
+    SEND_AUTHENTICATE_USER_FAIL,
+    LOGOUT_USER,
 } from '../actions/action-constants';
 import User from "../../models/user-model";
 
@@ -22,7 +23,7 @@ const dummyUsers = [
         email: "deasamniashvili@yahoo.com",
         password: "password",
     },
-]
+];
 
 const initialState = {
     users: dummyUsers,
@@ -100,7 +101,7 @@ const users = function (state = initialState, action) {
             };
 
         case REGISTER_USER_SUCCESS:
-            const {id, name, surname, email, password, registered} = action.payload;
+            const {id, name, surname, email, password} = action.payload;
             const newUser = new User(
                 id,
                 name,

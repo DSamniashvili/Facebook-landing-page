@@ -3,6 +3,7 @@ import configureStore from "./store/configureStore";
 import './App.scss';
 import {ContentContainer, SuccessPage} from './containers/index';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import constants from './constants/GENERAL';
 
 const store = configureStore();
 
@@ -12,16 +13,14 @@ function App() {
             <div className="App">
                 <BrowserRouter>
                     <Switch>
-                        <Route path="/" exact>
+                        <Route path={constants.paths.homepage} exact>
                             <ContentContainer />
                         </Route>
-                        <Route path="/successPage">
+                        <Route path={constants.paths.successPage}>
                             <SuccessPage />
                         </Route>
-
                     </Switch>
                 </BrowserRouter>
-
             </div>
         </Provider>
     );

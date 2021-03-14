@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-
 import '../styles/ListContainer.scss';
 import {ModalComponent, UsersList} from "../components";
 import {clearCurrentUserAction, deleteUserAction, setCurrentUserAction} from "../store/actions/login-actions";
+import constants from '../constants/GENERAL';
 
 const ListContainer = () => {
     const dispatch = useDispatch();
@@ -24,11 +24,12 @@ const ListContainer = () => {
         setIsModalOpen(true);
         dispatch(setCurrentUserAction(userId));
     }
+
     const handleUserDelete = (userId) => {
         dispatch(deleteUserAction(userId));
     }
 
-    const showScroll = users && users.length > 6;
+    const showScroll = users && users.length > constants.MAX_USERS_NO_SCROLL;
 
     return (
         <>
@@ -45,7 +46,6 @@ const ListContainer = () => {
                         <>
                             <h1 className={'heading-text empty-list-heading'}>Facebook</h1>
                             <h2 className={'heading-text empty-list-text'}>Connect with friends and the world around you on Facebook.</h2>
-
                         </>
                 }
             </div>

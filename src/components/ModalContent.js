@@ -10,6 +10,7 @@ import '../styles/LoginRegisterContainer.scss';
 import '../styles/RegistrationContainer.scss';
 import {callToRegisterUserAction, callToUpdateUserAction} from "../store/actions/login-actions";
 import {validateEmail, validatePassword} from "../utils/general-functions";
+import constants from "../constants/GENERAL";
 
 const initialState = {
     name: "",
@@ -124,7 +125,7 @@ const ModalContent = ({closeModal, currentUserId}) => {
             setError(initialErrorState);
             setTimeout(() => {
                 closeModal();
-            }, 3000);
+            }, constants.TIMEOUT_MS);
         } else {
             setShowErrors(true);
         }
